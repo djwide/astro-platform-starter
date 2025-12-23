@@ -3,88 +3,206 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="David Weidman">
-    <div class="max-w-3xl mx-auto">
-        <!-- Profile Header -->
-        <header class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-10">
-            <img
-                src="/images/profile.jpg"
-                alt="David Weidman"
-                class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded"
-            />
-            <div class="flex-1">
-                <h1 class="mb-2">David Weidman</h1>
-                <p class="text-gray-600 mb-3">
-                    Master in Public Policy Candidate<br />
-                    Harvard Kennedy School
-                </p>
-                <div class="text-sm text-gray-600 space-y-1">
-                    <p><a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a></p>
-                    <p><a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener">LinkedIn</a></p>
-                </div>
-            </div>
-        </header>
+  <div class="max-w-3xl mx-auto">
+    <!-- Profile Header -->
+    <header class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-10">
+      <img
+        src="/images/profile.jpg"
+        alt="David Weidman"
+        class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded"
+      />
+      <div class="flex-1">
+        <h1 class="mb-2">David Weidman</h1>
+        <p class="text-gray-600 mb-3">
+          AI Security Founder • Policy & Engineering<br />
+          Master in Public Policy Candidate, Harvard Kennedy School
+        </p>
 
-        <!-- Bio Section -->
-        <section class="mb-10">
-            <h2 class="mb-4 pb-2 border-b border-gray-200">About Me</h2>
-            <div class="text-gray-700 leading-relaxed space-y-4">
-                <p>
-                    I graduated from the United States Military Academy at West Point in 2016 with dual degrees in Computer Science and Mathematical Sciences. During my time there, I built an AI using machine learning to play the strategy game Go and conducted research on machine learning in software-defined radios.
-                </p>
-                <p>
-                    After commissioning as an Army officer, I served as a Logistics Officer with United States Army Africa and the 13th ESC, partnering with US, French, UN, and African militaries across 50 countries and helping provide allied armies with billions in life-sustaining resources.
-                </p>
-                <p>
-                    I then transitioned to serve as a Cyberwarfare Officer with United States Forces Korea, where I led a team of 13 technical experts advising a 4-star general commanding 30,000 soldiers. I was part of a select technical group focused on neutralizing North Korean WMD threats, giving me a front-row seat to the evolving landscape of digital conflict.
-                </p>
-                <p>
-                    I'm now pursuing a Master in Public Policy at Harvard Kennedy School with a focus on International and Global Affairs. I serve on the planning team for the Harvard/MIT Technology and National Security Conference, where I captain the AI and Quantum panels. At the same time, I'm building <a href="https://SenTeGuard.com" target="_blank" rel="noopener">SenTeGuard</a>, an AI security startup focused on preventing sensitive data leaks as organizations adopt generative AI tools.
-                </p>
-                <p>
-                    When I'm not thinking about prompt injection attacks or policy frameworks, you might find me playing Chopin on the piano or keeping up with my Australian Shepherd and an epileptic munchkin cat named Taiga.
-                </p>
-            </div>
-        </section>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <a
+            href="https://senteguard.com"
+            target="_blank"
+            rel="noopener"
+            class="text-sm px-3 py-1 rounded border border-gray-200 hover:border-gray-300"
+          >
+            SenTeGuard
+          </a>
+          <a
+            href="/writing"
+            class="text-sm px-3 py-1 rounded border border-gray-200 hover:border-gray-300"
+          >
+            Writing
+          </a>
+          <a
+            href="/speaking"
+            class="text-sm px-3 py-1 rounded border border-gray-200 hover:border-gray-300"
+          >
+            Speaking
+          </a>
+          <a
+            href="/projects"
+            class="text-sm px-3 py-1 rounded border border-gray-200 hover:border-gray-300"
+          >
+            Projects
+          </a>
+        </div>
 
-        <!-- Research Interests -->
-        <section class="mb-10">
-            <h2 class="mb-4 pb-2 border-b border-gray-200">Research Interests</h2>
-            <ul class="text-gray-700 space-y-2">
-                <li>AI security and cognitive firewalls for enterprise AI adoption</li>
-                <li>Cyberwarfare policy and national security implications of AI</li>
-                <li>Machine learning applications in defense and security</li>
-                <li>International AI governance and regulatory frameworks</li>
-            </ul>
-        </section>
+        <div class="text-sm text-gray-600 space-y-1">
+          <p>
+            <a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a>
+          </p>
+          <p>
+            <a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener"
+              >LinkedIn</a
+            >
+          </p>
+        </div>
+      </div>
+    </header>
 
-        <!-- Skills & Languages -->
-        <section class="mb-10">
-            <h2 class="mb-4 pb-2 border-b border-gray-200">Skills & Languages</h2>
-            <div class="grid sm:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="font-semibold text-gray-900 text-sm mb-2">Technical Skills</h3>
-                    <ul class="text-gray-600 text-sm space-y-1">
-                        <li>Software development (12+ programming languages)</li>
-                        <li>LLM development and prompt engineering</li>
-                        <li>Cyberwarfare operations and tactics</li>
-                        <li>Top Secret/SCI clearance</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-gray-900 text-sm mb-2">Languages</h3>
-                    <p class="text-gray-600 text-sm">Korean, French, Japanese, Italian, Mandarin</p>
-                </div>
-            </div>
-        </section>
+    <!-- Value Proposition -->
+    <section class="mb-10">
+      <div class="rounded border border-gray-200 p-5 bg-white">
+        <h2 class="mb-2">What I work on</h2>
+        <p class="text-gray-700 leading-relaxed">
+          I build security products and policy frameworks for the “meaning layer” of AI systems: preventing
+          sensitive knowledge from leaking when employees summarize, paraphrase, translate, or repackage
+          internal information through LLM tools.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-3">
+          My focus is practical: enterprise AI adoption that holds up under real compliance constraints
+          (privacy, export controls, regulated R&amp;D, and national-security environments), without slowing
+          teams to a crawl.
+        </p>
+      </div>
+    </section>
 
-        <!-- Contact -->
-        <section class="mb-10">
-            <h2 class="mb-4 pb-2 border-b border-gray-200">Contact</h2>
-            <div class="text-gray-700 text-sm">
-                <p class="mb-1"><strong>Email:</strong> <a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a></p>
-                <p class="mb-1"><strong>Location:</strong> Cambridge, MA</p>
-                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener">linkedin.com/in/david-weidman</a></p>
-            </div>
-        </section>
-    </div>
+    <!-- Bio -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">About</h2>
+      <div class="text-gray-700 leading-relaxed space-y-4">
+        <p>
+          I’m an AI security founder and policy-oriented engineer focused on “cognitive security”: how
+          meaning moves through humans, models, and workflows, and how organizations can enforce boundaries
+          when language models make it easy to transform and transmit knowledge.
+        </p>
+
+        <p>
+          I graduated from the United States Military Academy at West Point (’16) with dual degrees in
+          Computer Science and Mathematical Sciences. Early on, I built machine-learning systems for
+          strategy games and worked on applied ML research in communications systems.
+        </p>
+
+        <p>
+          In the U.S. Army, I served in operational and technical roles, including leading teams in
+          cyber-relevant missions and advising senior commanders. That experience shaped how I think about
+          real-world constraints: uncertainty, adversaries, and the need for systems that work under
+          pressure.
+        </p>
+
+        <p>
+          I’m currently completing an MPP at Harvard Kennedy School (International &amp; Global Affairs),
+          and I help organize the Harvard/MIT Technology &amp; National Security Conference. In parallel,
+          I’m building <a href="https://senteguard.com" target="_blank" rel="noopener">SenTeGuard</a>,
+          a security layer for enterprise GenAI that detects and blocks risky content flows at the point of
+          use.
+        </p>
+      </div>
+    </section>
+
+    <!-- Current Focus -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Current focus</h2>
+
+      <ul class="text-gray-700 space-y-3">
+        <li>
+          <span class="font-semibold text-gray-900">SenTeGuard:</span>
+          Preventing semantic leakage and unsafe disclosure in day-to-day LLM workflows (copy, export,
+          share, and AI chat boundaries).
+        </li>
+        <li>
+          <span class="font-semibold text-gray-900">Cognitive Security Standards (CSS):</span>
+          A governance and controls framework for meaning-based security, aligned with modern risk
+          management and enterprise compliance.
+        </li>
+        <li>
+          <span class="font-semibold text-gray-900">Policy research:</span>
+          AI governance and national-security implications of LLM capability growth, including “reachability”
+          and inference-based boundary erosion.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Research interests</h2>
+      <ul class="text-gray-700 space-y-2">
+        <li>AI security: semantic leakage, prompt injection, and inference risks</li>
+        <li>Enterprise “cognitive firewalls” and boundary maintenance for LLM applications</li>
+        <li>Governance and compliance for GenAI deployment in regulated environments</li>
+        <li>National security and cyberwarfare policy in the LLM era</li>
+      </ul>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Skills</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-2">Technical</h3>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>Security engineering for GenAI systems (DLP, content risk, guardrails)</li>
+            <li>Applied ML / LLM evaluation, red-teaming, and safety testing</li>
+            <li>Backend systems (Python/FastAPI), enterprise integrations, and deployment design</li>
+            <li>Product strategy for B2B security and compliance tooling</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-2">Policy &amp; leadership</h3>
+          <ul class="text-gray-600 text-sm space-y-1">
+            <li>AI governance, national security, and risk frameworks</li>
+            <li>Cross-functional leadership: technical teams and senior stakeholders</li>
+            <li>Writing and briefing for technical + non-technical audiences</li>
+            <li>International experience across defense and security contexts</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Languages</h2>
+      <p class="text-gray-600 text-sm">
+        Korean • French • Japanese • Italian • Mandarin
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Contact</h2>
+      <div class="text-gray-700 text-sm space-y-2">
+        <p>
+          <span class="font-semibold">Email:</span>
+          <a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a>
+        </p>
+        <p>
+          <span class="font-semibold">LinkedIn:</span>
+          <a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener"
+            >linkedin.com/in/david-weidman</a
+          >
+        </p>
+        <p class="text-gray-600">
+          Based in Cambridge, MA • Open to speaking, advising, and enterprise pilots.
+        </p>
+      </div>
+    </section>
+
+    <!-- Optional: Personal (kept tasteful) -->
+    <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Outside of work</h2>
+      <p class="text-gray-700 leading-relaxed">
+        I play piano (usually Chopin), and I spend a lot of time outdoors with my Australian Shepherd.
+      </p>
+    </section>
+  </div>
 </Layout>
