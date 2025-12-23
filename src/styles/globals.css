@@ -15,15 +15,15 @@
 
 @layer base {
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-3xl font-bold tracking-tight sm:text-4xl;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-xl font-semibold sm:text-2xl;
     }
 
     a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+        @apply text-blue-700 no-underline transition hover:underline;
     }
 
     pre {
@@ -31,7 +31,7 @@
     }
 
     :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
+        @apply px-1 py-0.5 font-mono rounded bg-gray-100 text-gray-800;
         font-size: 0.9em;
     }
 }

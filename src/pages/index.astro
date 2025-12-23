@@ -1,19 +1,163 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="David Weidman">
+    <div class="max-w-3xl mx-auto">
+        <!-- Profile Header -->
+        <header class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start mb-10">
+            <img
+                src="/images/profile.jpg"
+                alt="David Weidman"
+                class="w-40 h-40 sm:w-48 sm:h-48 object-cover rounded"
+            />
+            <div class="flex-1">
+                <h1 class="mb-2">David Weidman</h1>
+                <p class="text-gray-600 mb-3">
+                    Master in Public Policy Candidate<br />
+                    Harvard Kennedy School
+                </p>
+                <div class="text-sm text-gray-600 space-y-1">
+                    <p><a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a></p>
+                    <p><a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener">LinkedIn</a></p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bio Section -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">About Me</h2>
+            <div class="text-gray-700 leading-relaxed space-y-4">
+                <p>
+                    I'm a graduate student at Harvard Kennedy School pursuing a Master in Public Policy with a focus on International and Global Affairs. My work sits at the intersection of artificial intelligence, cybersecurity, and national security policy—a combination that reflects both my technical background and my years of service in the U.S. Army.
+                </p>
+                <p>
+                    Before coming to Harvard, I spent five years as an Army officer, including a tour as a Cyberwarfare Officer in South Korea where I led a team of technical specialists advising senior leadership on North Korean threats. That experience gave me a front-row seat to the evolving landscape of digital conflict and convinced me that the policy conversation around AI and security needs more people who understand what's happening under the hood.
+                </p>
+                <p>
+                    I'm currently building SenteGuard, an AI security startup focused on preventing sensitive data leaks as organizations adopt generative AI tools. I'm also helping organize the Harvard/MIT Technology and National Security Conference, where I captain the AI and Quantum panels.
+                </p>
+                <p>
+                    When I'm not thinking about prompt injection attacks or policy frameworks, you might find me playing Chopin on the piano or keeping up with my Australian Shepherd and an epileptic munchkin cat named Taiga.
+                </p>
+            </div>
+        </section>
+
+        <!-- Research Interests -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Research Interests</h2>
+            <ul class="text-gray-700 space-y-2">
+                <li>AI security and cognitive firewalls for enterprise AI adoption</li>
+                <li>Cyberwarfare policy and national security implications of AI</li>
+                <li>Machine learning applications in defense and security</li>
+                <li>International AI governance and regulatory frameworks</li>
+            </ul>
+        </section>
+
+        <!-- Current Work -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Current Work</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900">SenteGuard Inc.</h3>
+                    <p class="text-sm text-gray-500 mb-2">Founder / CEO &mdash; Cambridge, MA / Tokyo, Japan &mdash; 2025–Present</p>
+                    <p class="text-gray-700 text-sm mb-2">AI-driven SaaS startup building tools to prevent sensitive data leaks in enterprise AI workflows.</p>
+                    <ul class="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+                        <li>SenteGuard: Multi-layered cognitive firewall preventing data exfiltration to AI systems</li>
+                        <li>Cognitive Security Standards (CSS): Framework translating NIST, MITRE, ISO baselines into practical compliance</li>
+                        <li>Moyo: Information space mapping tool for visualizing private/public data overlap</li>
+                        <li>Joseki: Repository of verified, reusable prompt workflow building blocks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Education</h2>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-semibold text-gray-900">Harvard Kennedy School</h3>
+                        <span class="text-gray-500 text-sm">Expected May 2026</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">Master in Public Policy, International and Global Affairs</p>
+                    <ul class="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+                        <li>Planning team member, Harvard/MIT Technology and National Security Conference ('25 & '26)</li>
+                        <li>Panel Captain for Artificial Intelligence and Quantum panels</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-semibold text-gray-900">United States Military Academy at West Point</h3>
+                        <span class="text-gray-500 text-sm">May 2016</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">B.S. in Computer Science and Mathematical Sciences (dual major)</p>
+                    <ul class="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+                        <li>Built an AI using machine learning to play the strategy game Go</li>
+                        <li>Research project on machine learning in software-defined radios</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Professional Experience</h2>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-semibold text-gray-900">United States Forces Korea, US Army</h3>
+                        <span class="text-gray-500 text-sm">2019–2024</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">Cyberwarfare Officer (Captain) &mdash; Camp Humphreys, South Korea</p>
+                    <ul class="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+                        <li>Led team of 13 technical experts advising 4-star general command of 30,000 soldiers</li>
+                        <li>Member of select technical group on neutralizing North Korean WMD threats</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-semibold text-gray-900">United States Army Africa / 13th ESC</h3>
+                        <span class="text-gray-500 text-sm">2016–2019</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">Logistics Officer (Lieutenant) &mdash; Vicenza, Italy / Fort Hood, TX</p>
+                    <ul class="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+                        <li>Partnered with US, French, UN, and African militaries across 50 countries</li>
+                        <li>Provided allied armies with $5 billion in life-sustaining resources</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Languages -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Skills & Languages</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 text-sm mb-2">Technical Skills</h3>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li>Software development (12+ programming languages)</li>
+                        <li>LLM development and prompt engineering</li>
+                        <li>Cyberwarfare operations and tactics</li>
+                        <li>Top Secret/SCI clearance</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 text-sm mb-2">Languages</h3>
+                    <p class="text-gray-600 text-sm">Korean, French, Japanese, Italian, Mandarin</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="mb-10">
+            <h2 class="mb-4 pb-2 border-b border-gray-200">Contact</h2>
+            <div class="text-gray-700 text-sm">
+                <p class="mb-1"><strong>Email:</strong> <a href="mailto:DWeidman@hks.harvard.edu">DWeidman@hks.harvard.edu</a></p>
+                <p class="mb-1"><strong>Location:</strong> Cambridge, MA</p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/david-weidman" target="_blank" rel="noopener">linkedin.com/in/david-weidman</a></p>
+            </div>
+        </section>
+    </div>
 </Layout>
