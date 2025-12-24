@@ -1,0 +1,19 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/speaking', label: 'Speaking' },
+  { href: '/projects', label: 'Projects' },
+];
+---
+
+<nav class="flex flex-wrap items-center gap-2 text-sm">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      class="px-3 py-1 rounded border border-gray-200 hover:border-gray-300"
+    >
+      {link.label}
+    </a>
+  ))}
+</nav>

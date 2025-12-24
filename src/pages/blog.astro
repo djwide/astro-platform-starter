@@ -1,21 +1,58 @@
 ---
+import { getStore } from '@netlify/blobs';
 import Layout from '../layouts/Layout.astro';
+import SubpageNav from '../components/SubpageNav.astro';
+
+export const prerender = false;
+
+const blobStore = getStore({ name: 'blog-posts', consistency: 'strong' });
+const list = await blobStore.list();
+const posts = await Promise.all(
+  list.blobs.map(async ({ key }) => {
+    const post = await blobStore.getJSON(key);
+    return { ...post, key };
+  })
+);
+const sortedPosts = posts
+  .filter((post) => post?.title)
+  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 ---
 
 <Layout title="Blog">
   <div class="max-w-3xl mx-auto">
-    <header class="mb-8">
-      <h1 class="mb-2">Blog</h1>
-      <p class="text-gray-700">
-        I share working notes, essays, and short updates on AI security, policy, and product strategy.
-        Use the forms below to post a new entry or leave a comment.
-      </p>
+    <header class="mb-8 space-y-4">
+      <SubpageNav />
+      <div>
+        <h1 class="mb-2">Blog</h1>
+        <p class="text-gray-700">
+          I share working notes, essays, and short updates on AI security, policy, and product strategy.
+          Use the form below to post a new entry or leave a comment.
+        </p>
+      </div>
     </header>
 
     <section class="mb-10">
+      <h2 class="mb-4 pb-2 border-b border-gray-200">Latest posts</h2>
+      <div id="blog-posts" class="space-y-6">
+        {sortedPosts.length ? (
+          sortedPosts.map((post) => (
+            <article class="rounded border border-gray-200 p-4" data-post-key={post.key}>
+              <h3 class="text-lg font-semibold text-gray-900">{post.title}</h3>
+              <p class="text-xs text-gray-500 mt-1">
+                {post.author ? `${post.author} • ` : ''}{new Date(post.createdAt).toLocaleString()}
+              </p>
+              <p class="text-gray-700 mt-3 whitespace-pre-line">{post.body}</p>
+            </article>
+          ))
+        ) : (
+          <p class="text-gray-600">No posts yet. Check back soon.</p>
+        )}
+      </div>
+    </section>
+
+    <section class="mb-10">
       <h2 class="mb-4 pb-2 border-b border-gray-200">Post a new blog entry</h2>
-      <form name="blog-post" method="POST" data-netlify="true" class="space-y-4">
-        <input type="hidden" name="form-name" value="blog-post" />
+      <form id="blog-post-form" class="space-y-4">
         <div>
           <label class="block text-sm font-semibold text-gray-900" for="post-title">Title</label>
           <input
@@ -45,12 +82,26 @@ import Layout from '../layouts/Layout.astro';
             class="mt-1 w-full rounded border border-gray-200 px-3 py-2"
           />
         </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-900" for="post-token">Admin passphrase</label>
+          <input
+            id="post-token"
+            name="token"
+            type="password"
+            required
+            class="mt-1 w-full rounded border border-gray-200 px-3 py-2"
+          />
+        </div>
+        <p class="text-xs text-gray-500">
+          Posting is locked down to the admin passphrase so only you can submit entries.
+        </p>
         <button
           type="submit"
           class="text-sm px-4 py-2 rounded border border-gray-200 hover:border-gray-300"
         >
           Submit post
         </button>
+        <p id="blog-post-status" class="text-sm text-gray-600"></p>
       </form>
     </section>
 
@@ -88,3 +139,76 @@ import Layout from '../layouts/Layout.astro';
     </section>
   </div>
 </Layout>
+
+<script>
+  const form = document.querySelector('#blog-post-form');
+  const status = document.querySelector('#blog-post-status');
+  const postsContainer = document.querySelector('#blog-posts');
+
+  async function refreshPosts() {
+    const response = await fetch('/api/blog-posts');
+    if (!response.ok) return;
+    const data = await response.json();
+    postsContainer.innerHTML = '';
+    if (!data.posts?.length) {
+      const empty = document.createElement('p');
+      empty.className = 'text-gray-600';
+      empty.textContent = 'No posts yet. Check back soon.';
+      postsContainer.appendChild(empty);
+      return;
+    }
+
+    data.posts.forEach((post) => {
+      const article = document.createElement('article');
+      article.className = 'rounded border border-gray-200 p-4';
+
+      const title = document.createElement('h3');
+      title.className = 'text-lg font-semibold text-gray-900';
+      title.textContent = post.title;
+      article.appendChild(title);
+
+      const meta = document.createElement('p');
+      meta.className = 'text-xs text-gray-500 mt-1';
+      meta.textContent = `${post.author ? `${post.author} • ` : ''}${new Date(
+        post.createdAt
+      ).toLocaleString()}`;
+      article.appendChild(meta);
+
+      const body = document.createElement('p');
+      body.className = 'text-gray-700 mt-3 whitespace-pre-line';
+      body.textContent = post.body;
+      article.appendChild(body);
+
+      postsContainer.appendChild(article);
+    });
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    status.textContent = 'Submitting...';
+
+    const formData = new FormData(form);
+    const payload = {
+      title: formData.get('title'),
+      body: formData.get('body'),
+      author: formData.get('author'),
+      adminToken: formData.get('token')
+    };
+
+    const response = await fetch('/api/blog-posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const message = await response.json().catch(() => ({}));
+      status.textContent = message.error || 'Unable to submit post.';
+      return;
+    }
+
+    status.textContent = 'Post published.';
+    form.reset();
+    await refreshPosts();
+  });
+</script>

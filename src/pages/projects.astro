@@ -1,14 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SubpageNav from '../components/SubpageNav.astro';
 ---
 
 <Layout title="Projects">
   <div class="max-w-3xl mx-auto">
-    <header class="mb-8">
-      <h1 class="mb-2">Projects</h1>
-      <p class="text-gray-700">
-        A snapshot of my current focus areas and research interests.
-      </p>
+    <header class="mb-8 space-y-4">
+      <SubpageNav />
+      <div>
+        <h1 class="mb-2">Projects</h1>
+        <p class="text-gray-700">
+          A snapshot of my current focus areas and research interests.
+        </p>
+      </div>
     </header>
 
     <section class="mb-10">
